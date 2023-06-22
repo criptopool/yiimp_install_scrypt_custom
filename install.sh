@@ -2,7 +2,7 @@
 ################################################################################
 # Original Author:   crombiecrunch
 # Fork Author: manfromafar
-# Current Author: Vaudois
+# Current Author: Criptopool
 #
 # Program:
 #   Install yiimp on Ubuntu 16.04/18.04 running Nginx, MariaDB, and php7.3
