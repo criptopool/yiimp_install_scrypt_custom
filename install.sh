@@ -5,7 +5,7 @@
 # Current Author: Criptopool
 #
 # Program:
-#   Install yiimp on Ubuntu 16.04/18.04 running Nginx, MariaDB, and php7.3
+#   Install yiimp on Ubuntu 16.04/18.04 running Nginx, MariaDB, and php7.2
 #   v1.5
 ################################################################################
 
@@ -233,9 +233,9 @@ clear
 	sudo systemctl status mysql | sed -n "1,3p"
 	echo -e "$GREEN Done...$COL_RESET"
 
-	# Installing Installing php7.3
+	# Installing Installing php7.2
 	echo
-	echo -e "$CYAN => Installing php7.3 : $COL_RESET"
+	echo -e "$CYAN => Installing php7.2 : $COL_RESET"
 	sleep 3
 
 
@@ -248,15 +248,15 @@ clear
 		hide_output sudo apt -y update
 
 	if [[ ("$DISTRO" == "16") ]]; then
-		apt_install php7.3-fpm php7.3-opcache php7.3 php7.3-common php7.3-gd php7.3-mysql php7.3-imap php7.3-cli
-		apt_install php7.3-cgi php-pear php-auth imagemagick libruby php7.3-curl php7.3-intl php7.3-pspell mcrypt
-		apt_install php7.3-recode php7.3-sqlite3 php7.3-tidy php7.3-xmlrpc php7.3-xsl memcached php-memcache php-imagick
-		apt_install php-gettext php7.3-zip php7.3-mbstring php7.3-memcache php7.3-memcached
+		apt_install php7.2-fpm php7.2-opcache php7.2 php7.2-common php7.2-gd php7.2-mysql php7.2-imap php7.2-cli
+		apt_install php7.2-cgi php-pear php-auth imagemagick libruby php7.2-curl php7.2-intl php7.2-pspell mcrypt
+		apt_install php7.2-recode php7.2-sqlite3 php7.2-tidy php7.2-xmlrpc php7.2-xsl memcached php-memcache php-imagick
+		apt_install php-gettext php7.2-zip php7.2-mbstring php7.2-memcache php7.2-memcached
 	else
-		apt_install php7.3-fpm php7.3-opcache php7.3 php7.3-common php7.3-gd php7.3-mysql php7.3-imap php7.3-cli
-		apt_install php7.3-cgi php-pear imagemagick libruby php7.3-curl php7.3-intl php7.3-pspell mcrypt
-		apt_install php7.3-recode php7.3-sqlite3 php7.3-tidy php7.3-xmlrpc php7.3-xsl memcached php-memcache php-imagick php7.3-zip
-		apt_install php7.3-mbstring libpsl-dev libnghttp2-dev php7.3-memcache php7.3-memcached php-curl
+		apt_install php7.2-fpm php7.2-opcache php7.2 php7.2-common php7.2-gd php7.2-mysql php7.2-imap php7.2-cli
+		apt_install php7.2-cgi php-pear imagemagick libruby php7.2-curl php7.2-intl php7.2-pspell mcrypt
+		apt_install php7.2-recode php7.2-sqlite3 php7.2-tidy php7.2-xmlrpc php7.2-xsl memcached php-memcache php-imagick php7.2-zip
+		apt_install php7.2-mbstring libpsl-dev libnghttp2-dev php7.2-memcache php7.2-memcached php-curl
 		apt_install php-mbstring php-zip php-gd php-json
 		sudo phpenmod mbstring
 	fi
@@ -274,8 +274,8 @@ clear
 	fi
 
 	sleep 5
-	hide_output sudo systemctl start php7.3-fpm
-	sudo systemctl status php7.3-fpm | sed -n "1,3p"
+	hide_output sudo systemctl start php7.2-fpm
+	sudo systemctl status php7.2-fpm | sed -n "1,3p"
 
 	echo -e "$GREEN Done...$COL_RESET"
 
@@ -561,7 +561,7 @@ clear
 		sudo ln -s /etc/nginx/sites-available/$server_name.conf /etc/nginx/sites-enabled/$server_name.conf
 		sudo ln -s /var/web /var/www/$server_name/html
 		hide_output sudo systemctl restart nginx.service
-		hide_output sudo systemctl restart php7.3-fpm.service
+		hide_output sudo systemctl restart php7.2-fpm.service
 		echo -e "$GREEN Done...$COL_RESET"
 
 		if [[ ("$ssl_install" == "y" || "$ssl_install" == "Y" || "$ssl_install" == "") ]]; then
@@ -582,14 +582,14 @@ clear
 		fi
 
 		hide_output sudo systemctl restart nginx.service
-		hide_output sudo systemctl restart php7.3-fpm.service
+		hide_output sudo systemctl restart php7.2-fpm.service
 	else
 		confnginxnotsslsub "${server_name}" "${sub_domain}"
 	
 		sudo ln -s /etc/nginx/sites-available/$server_name.conf /etc/nginx/sites-enabled/$server_name.conf
 		sudo ln -s /var/web /var/www/$server_name/html
 		hide_output sudo systemctl restart nginx.service
-		hide_output sudo systemctl restart php7.3-fpm.service
+		hide_output sudo systemctl restart php7.2-fpm.service
 		echo -e "$GREEN Done...$COL_RESET"
     	
 		if [[ ("$ssl_install" == "y" || "$ssl_install" == "Y" || "$ssl_install" == "") ]]; then
@@ -608,7 +608,7 @@ clear
 		fi
 
 		hide_output sudo systemctl restart nginx.service
-		hide_output sudo systemctl restart php7.3-fpm.service
+		hide_output sudo systemctl restart php7.2-fpm.service
 		echo -e "$GREEN Done...$COL_RESET"
     fi
 
@@ -919,7 +919,7 @@ clear
 	sudo rm -rf /var/log/nginx/*
 
 	sleep 2
-	sudo update-alternatives --set php /usr/bin/php7.3 >/dev/null 2>&1
+	sudo update-alternatives --set php /usr/bin/php7.2 >/dev/null 2>&1
 	sleep 2
 	sudo systemctl restart cron.service
 	sleep 2
@@ -929,9 +929,9 @@ clear
 	sudo systemctl restart nginx.service
 	sleep 2
 	sudo systemctl status nginx | sed -n "1,3p"
-	sudo systemctl restart php7.3-fpm.service
+	sudo systemctl restart php7.2-fpm.service
 	sleep 2
-	sudo systemctl status php7.3-fpm | sed -n "1,3p"
+	sudo systemctl status php7.2-fpm | sed -n "1,3p"
 	sleep 2
 	sudo chmmod 777 /var/web/yaamp/runtime >/dev/null 2>&1
 	sleep 2
