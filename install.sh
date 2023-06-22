@@ -33,7 +33,7 @@ clear
 	ETHDEP="0xc4e42e92ef8a196eef7cc49456c786a41d7daa01"
 	BCHDEP="bitcoincash:qp9ltentq3rdcwlhxtn8cc2rr49ft5zwdv7k7e04df"
 
-	nameofinstall=yiimp_install_scrypt
+	nameofinstall=yiimp_install_scrypt_custom
 	daemonname=coinbuild
 	absolutepath=$HOME
 	installtoserver=coin-setup
