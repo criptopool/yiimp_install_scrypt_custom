@@ -5,9 +5,8 @@
 # Current Author: Vaudois
 #
 # Program:
-#   Install yiimp on Ubuntu 18.04 & 20.04* running Nginx, MariaDB, and php7.2 - php7.4**
+#   Install yiimp on Ubuntu 18.04 & 20.04* running Nginx, MariaDB, and php7.2 & php7.4
 #   *  phase beta for testing (possible not run good)
-#   ** not supported
 #   v2.0
 ################################################################################
 
@@ -35,7 +34,7 @@ clear
 	ETHDEP="0xc4e42e92ef8a196eef7cc49456c786a41d7daa01"
 	BCHDEP="bitcoincash:qp9ltentq3rdcwlhxtn8cc2rr49ft5zwdv7k7e04df"
 
-	nameofinstall=yiimp_install_scrypt
+	nameofinstall=yiimp_install_scrypt_custom
 	daemonname=coinbuild
 	absolutepath=$HOME
 	installtoserver=coin-setup
