@@ -5,7 +5,7 @@
 # Current Author: Vaudois
 #
 # Program:
-#   Install yiimp on Ubuntu 18.04 & 20.04* running Nginx, MariaDB, and php7.3**
+#   Install yiimp on Ubuntu 18.04 & 20.04* running Nginx, MariaDB, and php7.2 - php7.4**
 #   *  phase beta for testing (possible not run good)
 #   ** not supported
 #   v2.0
@@ -252,29 +252,32 @@ clear
    	sleep 2
    	echo -e "$YELLOW >--> Installing php...$COL_RESET"
 	if [[ ("$DISTRO" == "18") ]]; then
-		apt_install php7.3-fpm php7.3-opcache php7.3 php7.3-common php7.3-gd php7.3-mysql php7.3-imap php7.3-cli
-		apt_install php7.3-cgi php-pear imagemagick libruby php7.3-curl php7.3-intl php7.3-pspell mcrypt
-		apt_install php7.3-recode php7.3-sqlite3 php7.3-tidy php7.3-xmlrpc php7.3-xsl php-imagick php7.3-zip
-		apt_install php7.3-mbstring libpsl-dev libnghttp2-dev php7.3-memcache php7.3-memcached php-curl
+		apt_install php7.2-fpm php7.2-opcache php7.2 php7.2-common php7.2-gd php7.2-mysql php7.2-imap php7.2-cli
+		apt_install php7.2-cgi php-pear imagemagick libruby php7.2-curl php7.2-intl php7.2-pspell mcrypt
+		apt_install php7.2-recode php7.2-sqlite3 php7.2-tidy php7.2-xmlrpc php7.2-xsl php-imagick php7.2-zip
+		apt_install php7.2-mbstring libpsl-dev libnghttp2-dev php7.2-memcache php7.2-memcached php-curl
 		apt_install php-mbstring php-zip php-gd php-json memcached php-memcache
 		sudo phpenmod mbstring
 		apt_install php-gettext
   		echo
 		sleep 2
-		hide_output sudo systemctl start php7.3-fpm
-		sudo systemctl status php7.3-fpm | sed -n "1,3p"
-		PHPVERSION=7.3
+		hide_output sudo systemctl start php7.2-fpm
+		sudo systemctl status php7.2-fpm | sed -n "1,3p"
+		PHPVERSION=7.2
 	fi
 	if [[ ("$DISTRO" == "20") ]]; then
-		apt_install php8.2-fpm php8.2-opcache php8.2 php8.2-common php8.2-gd php8.2-mysql php8.2-imap php8.2-cli
-		apt_install php8.2-cgi php8.2-curl php8.2-intl php8.2-pspell
-		apt_install php8.2-sqlite3 php8.2-tidy php8.2-xmlrpc php8.2-xsl php8.2-zip
-		apt_install php8.2-mbstring php8.2-memcache php8.2-memcached memcached php-memcache php-memcached
+		apt_install php7.4-fpm php7.4-opcache php7.4 php7.4-common php7.4-gd php7.4-mysql php7.4-imap php7.4-cli
+		apt_install install php7.4-cgi php-pear imagemagick libruby php7.4-curl php7.4-intl php7.4-pspell mcrypt
+		apt_install php7.4-sqlite3 php7.4-tidy php7.4-xmlrpc php7.4-xsl php-imagick php7.4-zip
+		apt_install php7.4-mbstring libpsl-dev libnghttp2-dev php-curl
+		apt_install php-mbstring php-zip php-gd php-json memcached php-memcached
+		sudo phpenmod mbstring
+		apt_install gettext
 		echo
 		sleep 2
-		hide_output sudo systemctl start php8.2-fpm
-		sudo systemctl status php8.2-fpm | sed -n "1,3p"
-		PHPVERSION=8.2
+		hide_output sudo systemctl start php7.4-fpm
+		sudo systemctl status php7.4-fpm | sed -n "1,3p"
+		PHPVERSION=7.4
 	fi
 
 	sleep 5
