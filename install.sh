@@ -269,7 +269,7 @@ clear
 		apt_install php7.4-cgi php-pear imagemagick libruby php7.4-curl php7.4-intl php7.4-pspell mcrypt
 		apt_install php7.4-sqlite3 php7.4-tidy php7.4-xmlrpc php7.4-xsl php-imagick php7.4-zip
 		apt_install php7.4-mbstring libpsl-dev libnghttp2-dev php-curl
-		apt_install php-mbstring php-zip php-gd php-json memcached php-memcached
+		apt_install php-mbstring php-zip php-gd php-json php7.4-memcache php7.4-memcached memcached
 		sudo phpenmod mbstring
 		apt_install gettext
 		echo
@@ -288,7 +288,7 @@ clear
  	if [[ ("$DISTRO" == "18") ]]; then
 		apt_install php8.1-mysql
  	else
- 		apt_install php8.2-mysql
+ 		apt_install php7.4-mysql
   	fi
 	echo
 	hide_output service nginx restart
