@@ -167,9 +167,9 @@ function get_default_privateip {
 function term_art_server
 {
 	if [[ "${DISTRO}" == "20" ]]; then
- 		PHPINSTALL=8.2
+ 		PHPINSTALL=7.4
    	else
-    		PHPINSTALL=7.3
+    		PHPINSTALL=7.2
       	fi
 	clear
 	echo
