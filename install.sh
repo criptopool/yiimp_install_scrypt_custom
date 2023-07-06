@@ -5,8 +5,8 @@
 # Current Author: Criptopool
 #
 # Program:
-#   Install yiimp on Ubuntu 16.04/18.04 running Nginx, MariaDB, and php7.2
-#   v1.5
+#   Install yiimp on Ubuntu 20.04 running Nginx, MariaDB, and php7.4
+#   v1.6 beta
 ################################################################################
 
 if [ -z "${TAG}" ]; then
@@ -233,9 +233,9 @@ clear
 	sudo systemctl status mysql | sed -n "1,3p"
 	echo -e "$GREEN Done...$COL_RESET"
 
-	# Installing Installing php7.2
+	# Installing Installing php7.4
 	echo
-	echo -e "$CYAN => Installing php7.2 : $COL_RESET"
+	echo -e "$CYAN => Installing php7.4 : $COL_RESET"
 	sleep 3
 
 
@@ -566,7 +566,7 @@ clear
 		sudo ln -s /etc/nginx/sites-available/$server_name.conf /etc/nginx/sites-enabled/$server_name.conf
 		sudo ln -s /var/web /var/www/$server_name/html
 		hide_output sudo systemctl restart nginx.service
-		hide_output sudo systemctl restart php7.2-fpm.service
+		hide_output sudo systemctl restart php7.4-fpm.service
 		echo -e "$GREEN Done...$COL_RESET"
 
 		if [[ ("$ssl_install" == "y" || "$ssl_install" == "Y" || "$ssl_install" == "") ]]; then
@@ -587,14 +587,14 @@ clear
 		fi
 
 		hide_output sudo systemctl restart nginx.service
-		hide_output sudo systemctl restart php7.2-fpm.service
+		hide_output sudo systemctl restart php7.4-fpm.service
 	else
 		confnginxnotsslsub "${server_name}" "${sub_domain}"
 	
 		sudo ln -s /etc/nginx/sites-available/$server_name.conf /etc/nginx/sites-enabled/$server_name.conf
 		sudo ln -s /var/web /var/www/$server_name/html
 		hide_output sudo systemctl restart nginx.service
-		hide_output sudo systemctl restart php7.2-fpm.service
+		hide_output sudo systemctl restart php7.4-fpm.service
 		echo -e "$GREEN Done...$COL_RESET"
     	
 		if [[ ("$ssl_install" == "y" || "$ssl_install" == "Y" || "$ssl_install" == "") ]]; then
@@ -613,7 +613,7 @@ clear
 		fi
 
 		hide_output sudo systemctl restart nginx.service
-		hide_output sudo systemctl restart php7.2-fpm.service
+		hide_output sudo systemctl restart php7.4-fpm.service
 		echo -e "$GREEN Done...$COL_RESET"
     fi
 
@@ -924,7 +924,7 @@ clear
 	sudo rm -rf /var/log/nginx/*
 
 	sleep 2
-	sudo update-alternatives --set php /usr/bin/php7.2 >/dev/null 2>&1
+	sudo update-alternatives --set php /usr/bin/php7.4 >/dev/null 2>&1
 	sleep 2
 	sudo systemctl restart cron.service
 	sleep 2
@@ -934,9 +934,9 @@ clear
 	sudo systemctl restart nginx.service
 	sleep 2
 	sudo systemctl status nginx | sed -n "1,3p"
-	sudo systemctl restart php7.2-fpm.service
+	sudo systemctl restart php7.4-fpm.service
 	sleep 2
-	sudo systemctl status php7.2-fpm | sed -n "1,3p"
+	sudo systemctl status php7.4-fpm | sed -n "1,3p"
 	sleep 2
 	sudo chmmod 777 /var/web/yaamp/runtime >/dev/null 2>&1
 	sleep 2
