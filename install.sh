@@ -247,20 +247,13 @@ clear
 	fi
 		hide_output sudo apt -y update
 
-	if [[ ("$DISTRO" == "16") ]]; then
-		apt_install php7.2-fpm php7.2-opcache php7.2 php7.2-common php7.2-gd php7.2-mysql php7.2-imap php7.2-cli
-		apt_install php7.2-cgi php-pear php-auth imagemagick libruby php7.2-curl php7.2-intl php7.2-pspell mcrypt
-		apt_install php7.2-recode php7.2-sqlite3 php7.2-tidy php7.2-xmlrpc php7.2-xsl memcached php-memcache php-imagick
-		apt_install php-gettext php7.2-zip php7.2-mbstring php7.2-memcache php7.2-memcached
-	else
+	if [[ ("$DISTRO" == "18") ]]; then
 		apt_install php7.2-fpm php7.2-opcache php7.2 php7.2-common php7.2-gd php7.2-mysql php7.2-imap php7.2-cli
 		apt_install php7.2-cgi php-pear imagemagick libruby php7.2-curl php7.2-intl php7.2-pspell mcrypt
 		apt_install php7.2-recode php7.2-sqlite3 php7.2-tidy php7.2-xmlrpc php7.2-xsl memcached php-memcache php-imagick php7.2-zip
 		apt_install php7.2-mbstring libpsl-dev libnghttp2-dev php7.2-memcache php7.2-memcached php-curl
 		apt_install php-mbstring php-zip php-gd php-json
 		sudo phpenmod mbstring
-	fi
-	if [[ ("$DISTRO" == "18") ]]; then
 		apt_install php-gettext
 	fi
 	if [[ ("$DISTRO" == "20") ]]; then
