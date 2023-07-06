@@ -264,18 +264,23 @@ clear
 		apt_install php-gettext
 	fi
 	if [[ ("$DISTRO" == "20") ]]; then
-		sudo apt install php8.2-fpm php8.2-opcache php8.2 php8.2-common php8.2-gd php8.2-mysql php8.2-imap php8.2-cli
-		sudo apt install php8.2-cgi php8.2-curl php8.2-intl php8.2-pspell
-		sudo apt install php8.2-sqlite3 php8.2-tidy php8.2-xmlrpc php8.2-xsl php8.2-zip
-		sudo apt install php8.2-mbstring php8.2-memcache php8.2-memcached
-		# sleep 2
-		# hide_output sudo systemctl start php8.2-fpm
-		# sudo systemctl status php8.2-fpm | sed -n "1,3p"
+		apt_install php7.4-fpm php7.4-opcache php7.4 php7.4-common php7.4-gd php7.4-mysql php7.4-imap php7.4-cli
+		apt_install php7.4-cgi php-pear imagemagick libruby php7.4-curl php7.4-intl php7.4-pspell mcrypt
+		apt_install php7.4-sqlite3 php7.4-tidy php7.4-xmlrpc php7.4-xsl php-imagick php7.4-zip
+		apt_install php7.4-mbstring libpsl-dev libnghttp2-dev php-curl
+		apt_install php-mbstring php-zip php-gd php-json php7.4-memcache php7.4-memcached memcached
+		sudo phpenmod mbstring
+		apt_install gettext
+		echo
+		sleep 2
+		hide_output sudo systemctl start php7.4-fpm
+		sudo systemctl status php7.4-fpm | sed -n "1,3p"
+		PHPVERSION=7.4
 	fi
 
 	sleep 5
-	hide_output sudo systemctl start php7.2-fpm
-	sudo systemctl status php7.2-fpm | sed -n "1,3p"
+	hide_output sudo systemctl start php7.4-fpm
+	sudo systemctl status php7.4-fpm | sed -n "1,3p"
 
 	echo -e "$GREEN Done...$COL_RESET"
 
