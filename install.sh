@@ -242,10 +242,10 @@ clear
 	apt_install software-properties-common build-essential
 	hide_output sudo apt -y update
 
-	if [ ! -f /etc/apt/sources.list.d/ondrej-php-bionic.list ]; then
-		hide_output sudo add-apt-repository -y ppa:ondrej/php
-	fi
-		hide_output sudo apt -y update
+	#if [ ! -f /etc/apt/sources.list.d/ondrej-php-bionic.list ]; then
+	#	hide_output sudo add-apt-repository -y ppa:ondrej/php
+	#fi
+	#	hide_output sudo apt -y update
 
 	if [[ ("$DISTRO" == "18") ]]; then
 		apt_install php7.2-fpm php7.2-opcache php7.2 php7.2-common php7.2-gd php7.2-mysql php7.2-imap php7.2-cli
