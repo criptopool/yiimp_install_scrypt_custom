@@ -17,12 +17,13 @@ function package_compile_crypto
 
     	apt_install libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils git cmake libboost-all-dev zlib1g-dev libz-dev
 	apt_install libzmq5 libseccomp-dev libcap-dev libminiupnpc-dev gettext
-	if [ "${DISTRO}" == "16" ] || [ "${DISTRO}" == "18" ]; then
+	if [ "${DISTRO}" == "16" ] || [ "${DISTRO}" == "18" ] || [ "${DISTRO}" == "20" ]; then
 
-		apt_install libminiupnpc10
+		apt_install libminiupnpc17
 		sudo add-apt-repository -y ppa:bitcoin/bitcoin -qq > /dev/null 2>&1
 		sudo apt -y update && sudo apt -y upgrade -qq > /dev/null 2>&1
-		apt_install libdb4.8-dev libdb4.8++-dev libdb5.3 libdb5.3++
+		apt_install libdb5.3 libdb5.3++ libminiupnpc-dev
+		#libdb4.8-dev libdb4.8++-dev
 	else
 		apt_install libminiupnpc-dev libdb5.3 libdb5.3++
 	fi
